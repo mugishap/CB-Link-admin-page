@@ -405,6 +405,8 @@ dl {
   transform: translateX(150%);
   position: absolute;
   margin-top: 40px;
+  z-index: 1;
+  transition: all 0.5s ease;
 }
 .menu:hover {
   cursor: pointer;
@@ -447,7 +449,41 @@ dl {
   }
 }
 @media screen and (max-width: 620px) {
- .top-space, .charts{
-        transform: scale(0.9);
-    }
+  .top-space,
+  .charts {
+    transform: scale(0.9);
+  }
+  .main-chart {
+    transform: scale(1.25, 2.2);
+    margin-top: 52px;
+  }
+  .descriptions {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 444px) {
+  .top-space button {
+    transform: scale(0.8);
+  }
+  .main-chart {
+    transform: scale(1.25, 2.2);
+    margin-top: 52px;
+  }
+  canvas {
+    width: 100%;
+    height: 300px;
+  }
+}
+@media screen and (max-width: 400px) {
+    .top-space button {
+        transform: scale(0.75);
+      }
+}
+@media screen and (max-width: 368) {
+    .top-space button {
+        transform: scale(0.65);
+      }
 }
