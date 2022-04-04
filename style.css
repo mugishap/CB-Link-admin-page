@@ -1,5 +1,5 @@
-.root {
-  --var: var(--var) (primary-color);
+:root {
+  --primary-color: rgb(0, 13, 86);
 }
 * {
   transition: all 0.5s ease;
@@ -7,9 +7,11 @@
   padding: 0;
   margin: 0;
   outline: 0;
+  /* overflow-x: hidden; */
 }
 body {
   font-family: "Microsoft Tai Le", monospace;
+  overflow-x: hidden;
 }
 button {
   cursor: pointer;
@@ -195,7 +197,7 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: rgb(0, 13, 86);
+  background-color: var(--primary-color);
   color: white;
   font-family: "Microsoft Tai Le", monospace;
   transform: translate(1px, 1px);
@@ -215,7 +217,7 @@ a {
   flex-direction: column;
 }
 .mode-btn {
-  background-color: rgb(0, 13, 86);
+  background-color: var(--primary-color);
   border: none;
   color: white;
   width: 12em;
@@ -234,11 +236,12 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: right;
 }
 
 .support-btn {
   border: none;
-  background-color: rgb(0, 13, 86);
+  background-color: var(--primary-color);
   border-radius: 10px;
   width: 13em;
   margin: 5px;
@@ -255,7 +258,7 @@ a {
 }
 .email-btn {
   border: none;
-  background-color: rgb(0, 13, 86);
+  background-color: var(--primary-color);
   border-radius: 10px;
   width: 13em;
   color: white;
@@ -271,7 +274,7 @@ a {
   justify-content: center;
 }
 .calc-btn {
-  background-color: rgb(0, 13, 86);
+  background-color: var(--primary-color);
   border: none;
   color: white;
   width: 12em;
@@ -287,7 +290,7 @@ a {
   width: 80%;
   height: 40px;
   border-radius: 10px;
-  background-color: rgb(0, 13, 86);
+  background-color: var(--primary-color);
   color: white;
 }
 .credentials {
@@ -295,6 +298,37 @@ a {
   align-items: center;
   margin-top: 30px;
   flex-direction: column;
+}
+.descriptions button:hover {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  perspective: 1000px;
+}
+.top-space button:hover {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-2px, 0, 0);
+  }
+  40%,
+  60% {
+    transform: translate3d(2px, 0, 0);
+  }
 }
 .descriptions {
   display: flex;
@@ -309,17 +343,96 @@ a {
   justify-content: space-between;
   align-items: center;
   border-radius: 10px;
-  border: 2px solid rgb(0, 13, 86);
+  border: 2px solid var(--primary-color);
   padding: 10px;
   margin: 5px;
-  height: 8em;
+  height: 10em;
 }
-.in-descriptions table{
-border-collapse: collapse;
+.in-descriptions table {
+  border-collapse: collapse;
 }
-.in-descriptions tr{
-margin: 20px;
+.in-descriptions tr {
+  margin: 20px;
 }
-dl{
-    list-style-type: square;
+span.menu {
+  display: none;
+}
+dl {
+  list-style-type: square;
+}
+@media screen and (max-width: 1113px) {
+  div.list-div {
+    display: none;
+  }
+  span.menu {
+    transform: scale(1.5);
+    margin: 10px 10px;
+    display: flex;
+  }
+  ul {
+    list-style-type: none;
+  }
+}
+@media screen and (max-width: 350px) {
+  .calculator {
+    transform: scale(0.8);
+  }
+}
+.on-small-screen {
+  background-color: var(--primary-color);
+}
+.cancel {
+  display: flex;
+  justify-content: right;
+  color: white;
+}
+.close-nav {
+  color: white;
+  transform: scale(2);
+  margin-right: 20px;
+}
+.sm-list-div {
+  margin: 10px;
+}
+.on-small-screen {
+  width: 40%;
+  display: none;
+  transform: translateX(150%);
+  position: absolute;
+  margin-top: 40px;
+}
+.menu:hover {
+  cursor: pointer;
+}
+@media screen and (max-width: 1332px) {
+  .descriptions {
+    display: grid;
+    grid: 50% / auto auto;
+  }
+  .in-descriptions {
+    width: 90%;
+    margin: 10px;
+  }
+}
+@media screen and (max-width: 730px) {
+  canvas {
+    height: 300px;
+  }
+  .top-space {
+    transform: scale(0.9);
+    white-space: nowrap;
+  }
+  .in-descriptions {
+    width: 90%;
+    margin: 5px;
+  }
+
+}
+@media screen and (max-width:693px){
+    .logo{
+        transform: scale(0.8) translateX(-20px);
+    }
+    .title{
+        content: '';
+    }
 }
