@@ -8,6 +8,10 @@
     <title>CB Link</title>
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="melo-removebg-preview.png" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"
+        integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
@@ -15,34 +19,36 @@
     <div class="main">
         <div class="navbar">
             <div class="logo">
-                <img src="/cb.png" alt="logo">
+                <img src="/cb.png" width="250" alt="logo">
             </div>
             <div class="list-div">
                 <ul class="list">
-                    <li>HOME</li>
-                    <li>INVENTORY STORE</li>
-                    <li>SALES</li>
-                    <li>EXPENSES</li>
-                    <li>REPORTS</li>
-                    <li>MANAGER</li>
-                    <li><span class="material-icons">settings</span></li>
+                    <li><a href="">HOME</li></a>
+                    <li><a href="">INVENTORY STORE</li></a>
+                    <li><a href="">SALES</li></a>
+                    <li><a href="">EXPENSES</li></a>
+                    <li><a href="">REPORTS</li></a>
+                    <li><a href="">MANAGER</li></a>
+                    <li><a href=""><span class="material-icons">settings</span></li></a>
                 </ul>
             </div>
         </div>
         <div class="top-space">
-            <div>
+            <div class="in-top-space">
                 <div class="move-tos">
-                    mode Switch
+                    <button class="mode-btn" onclick="changeTheme(event)">Switch Mode</button>
+                    <button class="calc-btn">Use Calculator<span class="material-icons">calculate</span></button>
                 </div>
-                <div class="move-tos"></div>
             </div>
-            <div class="credentials">
-                <p class="title"></p>
-                <p class="name"></p>
+            <div class="credentials in-top-space">
+                <p class="title">ADMINISTRATOR</p>
+                <p class="name">SANTUS HABUMUGISHA</p>
             </div>
-            <div class="support">
-                <div class="in-support"></div>
-                <div class="in-support"></div>
+            <div class="support in-top-space">
+                <div class="in-support">
+                    <button class="support-btn"><span class="material-icons">support_agent</span>Support</button>
+                    <button class="email-btn"><span class="material-icons">email</span>Send Business Email</button>
+                </div>
             </div>
         </div>
         <div class="charts">
@@ -56,12 +62,93 @@
 
                 </div>
                 <div class="chart-canvas">
-                    <canvas width="500" height="300" id="debit-chart"></canvas>
+                    <canvas width="300" height="80" id="debit-chart"></canvas>
                 </div>
             </div>
         </div>
-        <footer>&copy;2022 Cb-Link Ltd, Melo Software. All Rights reserved!</footer>
+        <div class="footer">
+            <footer>&copy;2022 Cb-Link Ltd, Melo Software. All Rights reserved!</footer>
+        </div>
     </div>
+    <div class="container">
+        <span class="close material-icons">close</span>
+        <div class="calculator dark">
+            <div class="theme-toggler active">
+                <i class="toggler-icon"></i>
+            </div>
+            <div class="display-screen">
+                <div id="display"></div>
+            </div>
+            <div class="buttons">
+                <table>
+                    <tr>
+                        <td><button class="calc-btn btn-operator" id="clear">C</button></td>
+                        <td><button class="calc-btn btn-operator" id="/">&divide;</button></td>
+                        <td><button class="calc-btn btn-operator" id="*">&times;</button></td>
+                        <td><button class="calc-btn btn-operator" id="backspace"><</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="calc-btn btn-number" id="7">7</button></td>
+                        <td><button class="calc-btn btn-number" id="8">8</button></td>
+                        <td><button class="calc-btn btn-number" id="9">9</button></td>
+                        <td><button class="calc-btn btn-operator" id="-">-</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="calc-btn btn-number" id="4">4</button></td>
+                        <td><button class="calc-btn btn-number" id="5">5</button></td>
+                        <td><button class="calc-btn btn-number" id="6">6</button></td>
+                        <td><button class="calc-btn btn-operator" id="+">+</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="calc-btn btn-number" id="1">1</button></td>
+                        <td><button class="calc-btn btn-number" id="2">2</button></td>
+                        <td><button class="calc-btn btn-number" id="3">3</button></td>
+                        <td rowspan="2"><button class="calc-btn btn-equal" id="equal">=</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="calc-btn btn-operator" id="(">(</button></td>
+                        <td><button class="calc-btn btn-number" id="0">0</button></td>
+                        <td><button class="calc-btn btn-operator" id=")">)</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <script src="calculator.js"></script>
+    </div>
+    <script>
+        const ctx = document.querySelector('#debit-chart');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Total Debts', 'Total Paid', 'Total Remaining'],
+                datasets: [{
+                    label: 'Amount/(T.Debits)8,000.00',
+                    data: [8000, 3000, 5000],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.3)',
+                        'rgba(54, 162, 235, 0.3)',
+                        'rgba(255, 206, 86, 0.3)',
+
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                    ],
+                    borderWidth: 2,
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+
 </body>
 
 </html>
