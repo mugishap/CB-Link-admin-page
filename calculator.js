@@ -1,5 +1,6 @@
 const display = document.querySelector('#display');
-const buttons = document.querySelectorAll('.calc-btn');
+const buttons = document.querySelectorAll('button');
+const close = document.querySelector(".close")
 
 buttons.forEach((item) => {
     item.onclick = () => {
@@ -11,7 +12,7 @@ buttons.forEach((item) => {
         }else if (display.innerText != '' && item.id == 'equal') {
             display.innerText = eval(display.innerText);
         }else if (display.innerText == '' && item.id == 'equal') {
-            display.innerText = "The input can't be empty!";
+            display.innerText = 'Empty!';
             setTimeout(() => (display.innerText = ''), 2000);
         }else {
             display.innerText += item.id;
