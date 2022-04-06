@@ -1,5 +1,6 @@
 :root {
   --primary-color: rgb(0, 13, 86);
+  --secondary-color: #fff;
 }
 * {
   transition: all 0.5s ease;
@@ -18,7 +19,7 @@ button {
 }
 .body-dark-mode {
   background-color: #000000dd;
-  color: white;
+  color: var(--secondary-color);
 }
 * {
   padding: 0;
@@ -198,7 +199,7 @@ a {
   flex-direction: row;
   justify-content: space-between;
   background-color: var(--primary-color);
-  color: white;
+  color: var(--secondary-color);
   font-family: "Microsoft Tai Le", monospace;
   transform: translate(1px, 1px);
   height: 53px;
@@ -219,7 +220,7 @@ a {
 .mode-btn {
   background-color: var(--primary-color);
   border: none;
-  color: white;
+  color: var(--secondary-color);
   width: 12em;
   height: 40px;
   border-radius: 10px;
@@ -250,7 +251,7 @@ a {
   border-radius: 10px;
   width: 13em;
   margin: 5px;
-  color: white;
+  color: var(--secondary-color);
   height: 40px;
   display: flex;
   justify-content: space-evenly;
@@ -259,14 +260,14 @@ a {
 
 .list a {
   text-decoration: none;
-  color: white;
+  color: var(--secondary-color);
 }
 .email-btn {
   border: none;
   background-color: var(--primary-color);
   border-radius: 10px;
   width: 13em;
-  color: white;
+  color: var(--secondary-color);
   height: 40px;
   display: flex;
   justify-content: space-around;
@@ -281,7 +282,7 @@ a {
 .calc-btn {
   background-color: var(--primary-color);
   border: none;
-  color: white;
+  color: var(--secondary-color);
   width: 12em;
   height: 40px;
   border-radius: 10px;
@@ -296,7 +297,7 @@ a {
   height: 40px;
   border-radius: 10px;
   background-color: var(--primary-color);
-  color: white;
+  color: var(--secondary-color);
 }
 .credentials {
   display: flex;
@@ -389,10 +390,10 @@ dl {
 .cancel {
   display: flex;
   justify-content: right;
-  color: white;
+  color: var(--secondary-color);
 }
 .close-nav {
-  color: white;
+  color: var(--secondary-color);
   transform: scale(2);
   margin-right: 20px;
 }
@@ -446,6 +447,10 @@ dl {
   }
   .in-top-space {
     width: 50%;
+    padding: 5px;
+  }
+  td{
+      padding: 0px 11px;
   }
 }
 @media screen and (max-width: 620px) {
@@ -486,4 +491,7 @@ dl {
     .top-space button {
         transform: scale(0.75);
       }
+}
+td{
+    padding: 0px 5px;
 }
