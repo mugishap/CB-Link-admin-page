@@ -1,10 +1,4 @@
-function changeTheme() {
-    let body = document.querySelector("body")
-    if (body) console.log("body is defined");
-    else console.log("body is not defined");
-    body.style.backgroundColor = "black"
-    console.log("fasdasf");
-}
+
 function calculatorOff() {
     container.style.display = "none"
 }
@@ -22,16 +16,17 @@ else {
 function showNav() {
     let icon = document.querySelector(".menu")
     let list = document.querySelector(".on-small-screen")
-    if(list.style.display == "flex"){
+    if (list.style.display == "flex") {
         list.style.display = "none"
         icon.innerHTML = "menu"
     }
-    else{
+    else {
         list.style.display = "flex"
         icon.innerHTML = "close"
     }
-    
-}
-if(document.documentElement.clientHeight == 693){
 
 }
+if (document.documentElement.clientHeight == 693) {
+
+}
+//FETCH FROM BACKEND BELOW HERE
